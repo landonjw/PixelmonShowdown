@@ -3,6 +3,7 @@ package io.github.landonjw.pixelmonshowdown.queues;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.battles.rules.clauses.BattleClause;
 import com.pixelmonmod.pixelmon.enums.EnumType;
+import io.github.landonjw.pixelmonshowdown.PixelmonShowdown;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class MonotypeClause extends BattleClause {
     EnumType type;
 
-    public MonotypeClause(String id, EnumType type1) {
+    public MonotypeClause(String id, EnumType type) {
         super(id);
         this.type = type;
     }
@@ -22,7 +23,7 @@ public class MonotypeClause extends BattleClause {
         boolean type1Different = false;
         boolean type2Different = false;
 
-        if(type != null) {
+        if(type == null) {
             EnumType type1;
             EnumType type2;
             type1 = team.get(0).getSpecies().getBaseStats().getType1();
@@ -47,8 +48,11 @@ public class MonotypeClause extends BattleClause {
         }
         else{
             for (Pokemon pokemon: team){
+                if(pokemon.getSpecies().getBaseStats().getType2() != null) {
+                }
                 if(pokemon.getSpecies().getBaseStats().getType1() != type &&
-                        pokemon.getSpecies().getBaseStats().getType2() != type){
+                        (pokemon.getSpecies().getBaseStats().getType2() != type ||
+                                pokemon.getSpecies().getBaseStats().getType2() == null)){
                     return false;
                 }
             }

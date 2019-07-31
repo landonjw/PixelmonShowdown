@@ -165,6 +165,8 @@ public class BattleManager {
                                                                             Text.builder(" [Elo: " + player2Elo + " > " + player2Profile.getElo() + "]").color(TextColors.GREEN)
                                                                                     .build()).build()).build()).build()).build();
                                             player2.sendMessage(textWin);
+                                            ladder.updatePlayer(player1UUID);
+                                            ladder.updatePlayer(player2UUID);
 
                                         }
                                         else if(Sponge.getServer().getPlayer(player2UUID).isPresent() == false){
@@ -179,6 +181,8 @@ public class BattleManager {
                                                                             Text.builder(" [Elo: " + player1Elo + " > " + player1Profile.getElo() + "]").color(TextColors.GREEN)
                                                                                     .build()).build()).build()).build()).build();
                                             player1.sendMessage(textWin);
+                                            ladder.updatePlayer(player1UUID);
+                                            ladder.updatePlayer(player2UUID);
                                         }
 
                                         //Remove both players from match

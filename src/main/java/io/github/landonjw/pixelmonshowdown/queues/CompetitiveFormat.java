@@ -1,6 +1,7 @@
 package io.github.landonjw.pixelmonshowdown.queues;
 
 import com.pixelmonmod.pixelmon.enums.EnumType;
+import com.pixelmonmod.pixelmon.enums.forms.EnumDeoxys;
 import io.github.landonjw.pixelmonshowdown.PixelmonShowdown;
 import io.github.landonjw.pixelmonshowdown.queues.MonotypeClause;
 import io.github.landonjw.pixelmonshowdown.utilities.DataManager;
@@ -302,21 +303,22 @@ public class CompetitiveFormat {
         }
 
         String monotype = DataManager.getFormatsNode().getNode("Formats", formatName, "Battle-Rules", "Monotype").getString();
-        if(monotype != null){
-            if(monotype.equals("Any")) {
-                BattleClause clause = new MonotypeClause("Monotype", null);
-                allClauses.add(clause);
-                strBattleRules.add("Monotype");
-            }
-            else{
-                EnumType type = EnumType.parseType(monotype);
-                if(type != null) {
-                    BattleClause clause = new MonotypeClause("Monotype", type);
+        if(monotype != null) {
+            if (!monotype.equals("None")){
+                if (monotype.equals("Any")) {
+                    BattleClause clause = new MonotypeClause("Monotype", null);
                     allClauses.add(clause);
-                    strBattleRules.add("Monotype " + type);
+                    strBattleRules.add("Monotype");
                 }
-                else{
-                    PixelmonShowdown.getInstance().getLogger().error("Error Adding Monotype Clause: " + monotype + ". Please check format config for errors.");
+                else {
+                    EnumType type = EnumType.parseType(monotype);
+                    if (type != null) {
+                        BattleClause clause = new MonotypeClause("Monotype", type);
+                        allClauses.add(clause);
+                        strBattleRules.add("Monotype " + type);
+                    } else {
+                        PixelmonShowdown.getInstance().getLogger().error("Error Adding Monotype Clause: " + monotype + ". Please check format config for errors.");
+                    }
                 }
             }
         }
