@@ -1,0 +1,21 @@
+[
+  {
+    "modid": "pixelmonshowdown",
+    "name": "PixelmonShowdown",
+    "description": "Competitive ELO System for Pixelmon",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://www.github.com/landonjw",
+    "updateUrl": "",
+    "authorList": [
+      "landonjw"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": [
+      "pixelmon",
+      "teslalibs"
+    ]
+  }
+]
