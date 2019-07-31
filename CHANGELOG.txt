@@ -1,0 +1,14 @@
+Version 1.2.5 - July 31, 2019
+
+  Additions:
+    - Monotype clause added in Formats.conf
+      - Able to set specific type for format (ie. Monotype Fire) or any type
+        - In Battle Rules, Monotype=<type> or Monotype=Any
+  
+  Fixes:
+    - Fixed bug with ladders not updating when battle ends through crash
+    - Fixed some issues with the default configs
+  
+  Tweaks:
+    - Added teleportation before elo updating on battle ends to reduce clunkiness on crashes
+    - Improved documentation within the source code
