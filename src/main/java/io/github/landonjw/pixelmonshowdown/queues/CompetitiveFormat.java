@@ -84,7 +84,7 @@ public class CompetitiveFormat {
             return clause;
         }
         //Throw error if pokemon not found
-        PixelmonShowdown.getInstance().getLogger().error("Error Getting Pokemon Clause: " + pokemonClause + ". Please check format config for errors.");
+        PixelmonShowdown.getLogger().error("Error Getting Pokemon Clause: " + pokemonClause + ". Please check format config for errors.");
         return null;
     }
 
@@ -113,7 +113,7 @@ public class CompetitiveFormat {
             }
         }
         else{
-            PixelmonShowdown.getInstance().getLogger().error("Error Adding Pokemon Clause: " + pokemonClause + ". Please check format config for errors.");
+            PixelmonShowdown.getLogger().error("Error Adding Pokemon Clause: " + pokemonClause + ". Please check format config for errors.");
         }
     }
 
@@ -163,7 +163,7 @@ public class CompetitiveFormat {
         }
 
         if(errorCaught1 == true && errorCaught2 == true){
-            PixelmonShowdown.getInstance().getLogger().error("Error Adding Ability Clause: " + itemClause + ". Please check format config for errors.");
+            PixelmonShowdown.getLogger().error("Error Adding Ability Clause: " + itemClause + ". Please check format config for errors.");
         }
         return null;
     }
@@ -185,7 +185,7 @@ public class CompetitiveFormat {
             return clause;
         }
         else{
-            PixelmonShowdown.getInstance().getLogger().error("Error Adding Ability Clause: " + abilityClause + ". Please check format config for errors.");
+            PixelmonShowdown.getLogger().error("Error Adding Ability Clause: " + abilityClause + ". Please check format config for errors.");
         }
         return null;
     }
@@ -212,7 +212,7 @@ public class CompetitiveFormat {
             }
         }
         catch (Exception e){
-            PixelmonShowdown.getInstance().getLogger().error("Error Adding Ability Clause: " + moveClause + ". Please check format config for errors.");
+            PixelmonShowdown.getLogger().error("Error Adding Ability Clause: " + moveClause + ". Please check format config for errors.");
         }
         return null;
     }
@@ -317,7 +317,7 @@ public class CompetitiveFormat {
                         allClauses.add(clause);
                         strBattleRules.add("Monotype " + type);
                     } else {
-                        PixelmonShowdown.getInstance().getLogger().error("Error Adding Monotype Clause: " + monotype + ". Please check format config for errors.");
+                        PixelmonShowdown.getLogger().error("Error Adding Monotype Clause: " + monotype + ". Please check format config for errors.");
                     }
                 }
             }
@@ -412,15 +412,15 @@ public class CompetitiveFormat {
                             strList.add(clause);
                         }
                         catch(Exception e){
-                            PixelmonShowdown.getInstance().getLogger().error("PixelmonShowdown has encountered an error loading complex causes! Check configuration for errors!");
+                            PixelmonShowdown.getLogger().error("PixelmonShowdown has encountered an error loading complex causes! Check configuration for errors!");
                         }
                     }
 
                     addComplexClause(strList);
                 }
                 catch(Exception e){
-                    PixelmonShowdown.getInstance().getLogger().error("PixelmonShowdown has encountered an error loading complex causes! Check configuration for errors!");
-                    PixelmonShowdown.getInstance().getLogger().error(e.getMessage());
+                    PixelmonShowdown.getLogger().error("PixelmonShowdown has encountered an error loading complex causes! Check configuration for errors!");
+                    PixelmonShowdown.getLogger().error(e.getMessage());
                 }
 
             }
@@ -429,7 +429,7 @@ public class CompetitiveFormat {
 
         }
         catch(ObjectMappingException e){
-            PixelmonShowdown.getInstance().getLogger().error("PixelmonShowdown has encountered an error loading format! Check configuration for errors!");
+            PixelmonShowdown.getLogger().error("PixelmonShowdown has encountered an error loading format! Check configuration for errors!");
         }
     }
 

@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
     Manages the matchmaking and battle starting of matchmaking queues
  */
 public class MatchMakingManager {
-    private static QueueManager queueManager = PixelmonShowdown.getInstance().getQueueManager();
+    private static QueueManager queueManager = PixelmonShowdown.getQueueManager();
     private static Boolean isRunning = false;
     private static Task matchMake;
     private static final int INTERVAL = DataManager.getConfigNode().getNode("Queue-Management", "Match-Maker-Timer").getInt();
@@ -316,7 +316,7 @@ public class MatchMakingManager {
             PlayerParticipant[] pp2 = {new PlayerParticipant(participant2, participant2Starter)};
 
             //Send player to Arena if enabled
-            ArenaManager arenaManager = PixelmonShowdown.getInstance().getArenaManager();
+            ArenaManager arenaManager = PixelmonShowdown.getArenaManager();
             if(ARENAS_ENABLED) {
                 if (arenaManager.isArenasFull() == false) {
                     Arena arena = arenaManager.addPlayers(player1, player2);
@@ -331,7 +331,7 @@ public class MatchMakingManager {
                         player2.setLocationAndRotation(locB, locationB.getHeadRotation());
                     }
                     catch(Exception e) {
-                        PixelmonShowdown.getInstance().getLogger().error("Error Teleporting to Arena");
+                        PixelmonShowdown.getLogger().error("Error Teleporting to Arena");
                         e.printStackTrace();
                     }
 

@@ -12,8 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 
-/*
-    Manages the loading and saving of all data within configuration files
+/**
+ * Manages the loading and saving of all data within configuration files
  */
 public class DataManager {
 
@@ -59,7 +59,7 @@ public class DataManager {
             interval = getConfigNode().getNode("Data-Management", "Save-Interval").getInt();
 
         } catch(IOException e) {
-            PixelmonShowdown.getInstance().getLogger().error("Error loading PixelmonShowdown Configurations");
+            PixelmonShowdown.getLogger().error("Error loading PixelmonShowdown Configurations");
             e.printStackTrace();
         }
 
@@ -73,18 +73,18 @@ public class DataManager {
             formatsLoad.save(formatsNode);
             arenasLoad.save(arenasNode);
         } catch (IOException e) {
-            PixelmonShowdown.getInstance().getLogger().error("Error saving PixelmonShowdown Configuration");
+            PixelmonShowdown.getLogger().error("Error saving PixelmonShowdown Configuration");
             e.printStackTrace();
         }
     }
 
     public static void saveElos() {
         try {
-            PixelmonShowdown.getInstance().getQueueManager().saveAllQueueProfiles();
+            PixelmonShowdown.getQueueManager().saveAllQueueProfiles();
             elosLoad.save(elosNode);
-            PixelmonShowdown.getInstance().getLogger().info("Elos saved.");
+            PixelmonShowdown.getLogger().info("Elos saved.");
         } catch (IOException e) {
-            PixelmonShowdown.getInstance().getLogger().error("Error saving PixelmonShowdown Elos Configuration");
+            PixelmonShowdown.getLogger().error("Error saving PixelmonShowdown Elos Configuration");
             e.printStackTrace();
         }
     }
@@ -93,7 +93,7 @@ public class DataManager {
         try {
             arenasLoad.save(arenasNode);
         } catch (IOException e) {
-            PixelmonShowdown.getInstance().getLogger().error("Error saving PixelmonShowdown Arenas Configuration");
+            PixelmonShowdown.getLogger().error("Error saving PixelmonShowdown Arenas Configuration");
             e.printStackTrace();
         }
     }
@@ -115,7 +115,7 @@ public class DataManager {
             saveAll();
 
         } catch (IOException e) {
-            PixelmonShowdown.getInstance().getLogger().error("Error updating PixelmonShowdown Configuration");
+            PixelmonShowdown.getLogger().error("Error updating PixelmonShowdown Configuration");
             e.printStackTrace();
         }
     }

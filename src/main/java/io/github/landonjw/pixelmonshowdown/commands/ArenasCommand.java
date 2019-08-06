@@ -7,7 +7,7 @@ import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.entity.living.player.Player;
 
-public class arenasCommand implements CommandExecutor {
+public class ArenasCommand implements CommandExecutor {
     public CommandResult execute(CommandSource src, CommandContext args) {
         if (src instanceof Player) {
             Player player = (Player) src;

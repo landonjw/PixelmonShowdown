@@ -33,7 +33,7 @@ public class EloLadder {
             sortProfiles();
         }
         catch(Exception e) {
-            PixelmonShowdown.getInstance().getLogger().error("PixelmonShowdown has encountered an error loading elo profiles!");
+            PixelmonShowdown.getLogger().error("PixelmonShowdown has encountered an error loading elo profiles!");
             e.printStackTrace();
         }
     }

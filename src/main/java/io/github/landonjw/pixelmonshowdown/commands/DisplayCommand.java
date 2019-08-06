@@ -15,7 +15,7 @@ import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.action.TextActions;
 import org.spongepowered.api.text.format.TextColors;
 
-public class displayCommand implements CommandExecutor {
+public class DisplayCommand implements CommandExecutor {
     public CommandResult execute(CommandSource src, CommandContext args) {
         if (src instanceof Player) {
             Player player = (Player) src;
@@ -27,7 +27,7 @@ public class displayCommand implements CommandExecutor {
                         if(args.<String>getOne("format").isPresent()){
                             String format = args.<String>getOne("format").get();
 
-                            QueueManager queueManager = PixelmonShowdown.getInstance().getQueueManager();
+                            QueueManager queueManager = PixelmonShowdown.getQueueManager();
                             if(queueManager.findQueue(format) != null){
                                 CompetitiveQueue queue = queueManager.findQueue(format);
                                 EloLadder ladder = queue.getLadder();
@@ -67,7 +67,7 @@ public class displayCommand implements CommandExecutor {
                         if(args.<String>getOne("format").isPresent()){
                             String format = args.<String>getOne("format").get();
 
-                            QueueManager queueManager = PixelmonShowdown.getInstance().getQueueManager();
+                            QueueManager queueManager = PixelmonShowdown.getQueueManager();
                             if(queueManager.findQueue(format) != null){
                                 CompetitiveQueue queue = queueManager.findQueue(format);
                                 EloLadder ladder = queue.getLadder();

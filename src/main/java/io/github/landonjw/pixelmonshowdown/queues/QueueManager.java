@@ -6,15 +6,12 @@ import io.github.landonjw.pixelmonshowdown.utilities.DataManager;
 import java.util.HashMap;
 import java.util.UUID;
 
-/*
-    Manages all of the competitive queues on the server
+/**
+ *  Manages all of the competitive queues on the server
  */
 public class QueueManager {
 
     private HashMap<String, CompetitiveQueue> queuesMap = new HashMap<>();
-
-    public QueueManager(){
-    }
 
     //Return all of the queues in the manager
     public HashMap<String, CompetitiveQueue> getAllQueues(){
@@ -24,7 +21,7 @@ public class QueueManager {
     //Load all competitive queues from the Formats.conf config
     public void loadFromConfig(){
         DataManager.getFormatsNode().getNode("Formats").getChildrenMap().forEach((k, v) -> {
-            PixelmonShowdown.getInstance().getLogger().info("Loading Queue: " + k.toString());
+            PixelmonShowdown.getLogger().info("Loading Queue: " + k.toString());
 
             //Load the format
             CompetitiveFormat format = new CompetitiveFormat(k.toString());
