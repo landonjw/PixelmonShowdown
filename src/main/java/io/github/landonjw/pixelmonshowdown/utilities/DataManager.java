@@ -16,13 +16,11 @@ import java.util.concurrent.TimeUnit;
  * Manages the loading and saving of all data within configuration files
  */
 public class DataManager {
-
     private static Path dir, config, elos, formats, arenas;
     private static ConfigurationLoader<CommentedConfigurationNode> configLoad, elosLoad, formatsLoad, arenasLoad;
     private static CommentedConfigurationNode configNode, elosNode, formatsNode, arenasNode;
     private static final String[] FILES = {"Configuration.conf", "Elos.conf", "Formats.conf", "Arenas.conf"};
-    private static Boolean taskRunning = false;
-    private static Boolean autoSaveEnabled;
+    private static boolean autoSaveEnabled;
     private static int interval;
 
     public static void setup(Path folder) {
@@ -40,10 +38,10 @@ public class DataManager {
             if(!Files.exists(dir))
                 Files.createDirectory(dir);
 
-            PixelmonShowdown.getInstance().getContainer().getAsset(FILES[0]).get().copyToFile(config, false, true);
-            PixelmonShowdown.getInstance().getContainer().getAsset(FILES[1]).get().copyToFile(elos, false, true);
-            PixelmonShowdown.getInstance().getContainer().getAsset(FILES[2]).get().copyToFile(formats, false, true);
-            PixelmonShowdown.getInstance().getContainer().getAsset(FILES[3]).get().copyToFile(arenas, false, true);
+            PixelmonShowdown.getContainer().getAsset(FILES[0]).get().copyToFile(config, false, true);
+            PixelmonShowdown.getContainer().getAsset(FILES[1]).get().copyToFile(elos, false, true);
+            PixelmonShowdown.getContainer().getAsset(FILES[2]).get().copyToFile(formats, false, true);
+            PixelmonShowdown.getContainer().getAsset(FILES[3]).get().copyToFile(arenas, false, true);
 
             configLoad = HoconConfigurationLoader.builder().setPath(config).build();
             elosLoad = HoconConfigurationLoader.builder().setPath(elos).build();
@@ -108,7 +106,7 @@ public class DataManager {
     public static void update() {
         try {
             configNode.mergeValuesFrom(HoconConfigurationLoader.builder()
-                    .setURL(PixelmonShowdown.getInstance().getContainer().getAsset(FILES[0]).get().getUrl())
+                    .setURL(PixelmonShowdown.getContainer().getAsset(FILES[0]).get().getUrl())
                     .build()
                     .load(ConfigurationOptions.defaults()));
 

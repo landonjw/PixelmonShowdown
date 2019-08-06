@@ -16,7 +16,6 @@ public class ArenaLocation {
     private double rX;
     private double rY;
     private double rZ;
-    private double returnWorld;
     private Location<World> returnLocation;
     private Vector3d returnHeadRotation;
 
@@ -40,7 +39,7 @@ public class ArenaLocation {
         this.uuid = uuid;
     }
 
-    public Boolean hasUUID(UUID compUUID){
+    public boolean hasUUID(UUID compUUID){
         if(uuid == null){
             return false;
         }

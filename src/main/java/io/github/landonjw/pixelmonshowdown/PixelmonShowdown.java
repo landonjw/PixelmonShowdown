@@ -5,6 +5,7 @@ import io.github.landonjw.pixelmonshowdown.commands.ArenasCommand;
 import io.github.landonjw.pixelmonshowdown.commands.DisplayCommand;
 import io.github.landonjw.pixelmonshowdown.commands.ShowdownCommand;
 import io.github.landonjw.pixelmonshowdown.battles.BattleManager;
+import io.github.landonjw.pixelmonshowdown.placeholders.PlaceholderBridge;
 import io.github.landonjw.pixelmonshowdown.queues.QueueManager;
 import io.github.landonjw.pixelmonshowdown.utilities.*;
 import com.google.inject.Inject;
@@ -12,6 +13,7 @@ import com.pixelmonmod.pixelmon.Pixelmon;
 import java.nio.file.Path;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.args.GenericArguments;
 import org.spongepowered.api.command.spec.CommandSpec;
@@ -31,25 +33,20 @@ import org.spongepowered.api.text.Text;
                 @Dependency(id="teslalibs"),
                 @Dependency(id = "placeholderapi", optional = true)
         })
-
 public class PixelmonShowdown {
-    public static final String PLUGIN_ID = "1.2.5";
-    public static final String PLUGIN_NAME = "1.2.5";
+    public static final String PLUGIN_ID = "pixelmonshowdown";
+    public static final String PLUGIN_NAME = "PixelmonShowdown";
     public static final String VERSION = "1.2.6";
     
-    @Inject
-    private static Logger logger;
-
-    @Inject
-    private static PluginContainer container;
+    private static Logger logger = LoggerFactory.getLogger(PLUGIN_NAME);
 
     @Inject
     @ConfigDir(sharedRoot=false)
-    private static Path dir;
+    private Path dir;
 
-    @Inject
     private static PixelmonShowdown instance;
-
+    private static PluginContainer container;
+    
     private static QueueManager queueManager = new QueueManager();
     private static ArenaManager arenaManager = new ArenaManager();
 
@@ -57,7 +54,7 @@ public class PixelmonShowdown {
         return instance;
     }
 
-    public PluginContainer getContainer() {
+    public static PluginContainer getContainer() {
         return container;
     }
 
@@ -76,6 +73,8 @@ public class PixelmonShowdown {
     @Listener
     public void preInit(GamePreInitializationEvent event) {
         instance = this;
+        container = Sponge.getPluginManager().getPlugin(PLUGIN_ID).get();
+        
         DataManager.setup(dir);
     }
 
@@ -112,6 +111,10 @@ public class PixelmonShowdown {
         queueManager.loadFromConfig();
         arenaManager.loadArenas();
         DataManager.startAutoSave();
+        
+        if (Sponge.getPluginManager().isLoaded("placeholderapi")) {
+            PlaceholderBridge.register();
+        }
     }
 
     @Listener

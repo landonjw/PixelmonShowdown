@@ -39,7 +39,7 @@ public class CompetitiveFormat {
     private List<String> strMoveClauses = new ArrayList<>();
     private int complexNum = 0;
 
-    private Boolean teamPreview = false;
+    private boolean teamPreview = false;
 
     public CompetitiveFormat(String formatName){
         this.formatName = formatName;
@@ -135,8 +135,8 @@ public class CompetitiveFormat {
             itemCamelCase = itemCamelCase.substring(0, spaceIndex) + upperCase + itemCamelCase.substring(spaceIndex + 2);
         }
 
-        Boolean errorCaught1 = false;
-        Boolean errorCaught2 = false;
+        boolean errorCaught1 = false;
+        boolean errorCaught2 = false;
         //Check if item exists
         try{
             if(itemLowerCase.equals("megastones")){
@@ -370,7 +370,7 @@ public class CompetitiveFormat {
         return positionNum;
     }
 
-    public Boolean isTeamPreview(){
+    public boolean isTeamPreview(){
         return teamPreview;
     }
 

@@ -36,8 +36,8 @@ import org.spongepowered.api.text.format.TextStyles;
 import java.util.*;
 import java.util.function.Consumer;
 
-/*
-    Manages all user interfaces for the Pixelmon Showdown plugin
+/**
+ * Manages all user interfaces for the Pixelmon Showdown plugin
  */
 public class UIManager {
 
@@ -46,7 +46,7 @@ public class UIManager {
     private ItemType activeQueueBall = (ItemType) PixelmonItemsPokeballs.pokeBall;
     private String activeArena = null;
     private ItemType activeArenaBall = (ItemType) PixelmonItemsPokeballs.pokeBall;
-    private PluginContainer container = PixelmonShowdown.getInstance().getContainer();
+    private PluginContainer container = PixelmonShowdown.getContainer();
     private Player player;
     private UUID playerUUID;
     private int arenasPageNum = 1;
@@ -187,7 +187,7 @@ public class UIManager {
             pokemonList.add(party[i]);
         }
 
-        Boolean doesValidate = false;
+        boolean doesValidate = false;
 
         if(activeQueueFormat == null){
             itemValidateTeam.offer(Keys.DISPLAY_NAME, Text.of(TextColors.GOLD, "Team Eligible: ", TextColors.RED, "Format Not Chosen"));

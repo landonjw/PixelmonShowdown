@@ -4,17 +4,17 @@ import io.github.landonjw.pixelmonshowdown.PixelmonShowdown;
 import io.github.landonjw.pixelmonshowdown.utilities.DataManager;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
  *  Manages all of the competitive queues on the server
  */
 public class QueueManager {
-
-    private HashMap<String, CompetitiveQueue> queuesMap = new HashMap<>();
+    private Map<String, CompetitiveQueue> queuesMap = new HashMap<>();
 
     //Return all of the queues in the manager
-    public HashMap<String, CompetitiveQueue> getAllQueues(){
+    public Map<String, CompetitiveQueue> getAllQueues(){
         return queuesMap;
     }
 
@@ -62,7 +62,7 @@ public class QueueManager {
     }
 
     //Check if player is in queue in any format
-    public Boolean isPlayerInQueue(UUID player){
+    public boolean isPlayerInQueue(UUID player){
         final boolean[] isInQueue = {false};
         queuesMap.forEach((format,queue) -> {
             if(queue.hasPlayerInQueue(player)){
@@ -73,7 +73,7 @@ public class QueueManager {
     }
 
     //Check if player is in prematch in any format
-    public Boolean isPlayerInPreMatch(UUID player){
+    public boolean isPlayerInPreMatch(UUID player){
         final boolean[] isInMatch = {false};
         queuesMap.forEach((format,queue) -> {
             if(queue.hasPlayerInPreMatch(player)){
@@ -84,7 +84,7 @@ public class QueueManager {
     }
 
     //Check if player is in match in any format
-    public Boolean isPlayerInMatch(UUID player){
+    public boolean isPlayerInMatch(UUID player){
         final boolean[] isInMatch = {false};
         queuesMap.forEach((format,queue) -> {
             if(queue.hasPlayerInMatch(player)){
@@ -95,7 +95,7 @@ public class QueueManager {
     }
 
     //Check if player is in anything from any format
-    public Boolean isPlayerInAny(UUID player){
+    public boolean isPlayerInAny(UUID player){
         final boolean[] isInMatch = {false};
         queuesMap.forEach((format,queue) -> {
             if(queue.hasPlayerInAny(player)){

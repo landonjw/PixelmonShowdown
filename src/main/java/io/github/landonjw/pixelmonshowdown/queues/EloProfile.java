@@ -8,12 +8,12 @@ import java.util.UUID;
  * Creates an elo profile for a player that contains stats for wins, losses, and elo
  */
 public class EloProfile {
-    private final static Boolean IS_PERSISTENT = DataManager.getConfigNode().getNode("Elo-Management", "K-Factor", "K-Factor-Persistent").getBoolean();
+    private final static boolean IS_PERSISTENT = DataManager.getConfigNode().getNode("Elo-Management", "K-Factor", "K-Factor-Persistent").getBoolean();
     private final static double K_FACTOR_LOW_ELO = DataManager.getConfigNode().getNode("Elo-Management", "K-Factor", "K-Factor-Low-Elo").getDouble();
     private final static double K_FACTOR_MID_ELO = DataManager.getConfigNode().getNode("Elo-Management", "K-Factor", "K-Factor-Mid-Elo").getDouble();
     private final static double K_FACTOR_HIGH_ELO = DataManager.getConfigNode().getNode("Elo-Management", "K-Factor", "K-Factor-High-Elo").getDouble();
     private final static double K_FACTOR_PERSISTENT = DataManager.getConfigNode().getNode("Elo-Management", "K-Factor", "K-Factor-Persistent-Value").getDouble();
-    private final static int ELO_FLOOR = DataManager.getConfigNode().getNode("Elo-Management", "Elo-Range", "Elo-Floor").getInt();
+    public final static int ELO_FLOOR = DataManager.getConfigNode().getNode("Elo-Management", "Elo-Range", "Elo-Floor").getInt();
     private final static int LOW_ELO_RANGE = DataManager.getConfigNode().getNode("Elo-Management", "Elo-Range", "Low-Elo-Range").getInt();
     private final static int HIGH_ELO_RANGE = DataManager.getConfigNode().getNode("Elo-Management", "Elo-Range", "High-Elo-Range").getInt();
     

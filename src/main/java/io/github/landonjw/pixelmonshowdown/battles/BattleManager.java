@@ -35,12 +35,11 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-/*
-    Manages the various ways that a battle can end, and how to assign elo to players
+/**
+ * Manages the various ways that a battle can end, and how to assign elo to players
  */
 public class BattleManager {
-
-    private static final Boolean ARENAS_ENABLED = DataManager.getConfigNode().getNode("Arena-Management", "Arenas-Enabled").getBoolean();
+    private static final boolean ARENAS_ENABLED = DataManager.getConfigNode().getNode("Arena-Management", "Arenas-Enabled").getBoolean();
 
     @SubscribeEvent
     public void onBattleEnd(BattleEndEvent event){

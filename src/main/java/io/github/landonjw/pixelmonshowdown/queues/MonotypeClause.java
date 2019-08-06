@@ -7,8 +7,8 @@ import io.github.landonjw.pixelmonshowdown.PixelmonShowdown;
 
 import java.util.List;
 
-/*
-    Creates a monotype clause where certain
+/**
+ * Creates a monotype clause where certain
  */
 public class MonotypeClause extends BattleClause {
     EnumType type;
