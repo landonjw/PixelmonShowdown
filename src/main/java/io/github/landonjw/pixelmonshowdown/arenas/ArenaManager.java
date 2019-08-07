@@ -1,15 +1,13 @@
 package io.github.landonjw.pixelmonshowdown.arenas;
 
-import io.github.landonjw.pixelmonshowdown.arenas.Arena;
-import io.github.landonjw.pixelmonshowdown.arenas.ArenaLocation;
 import io.github.landonjw.pixelmonshowdown.utilities.DataManager;
 import org.spongepowered.api.entity.living.player.Player;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
-/*
-    Manages all of the Arena objects for the matchmaking system
+/**
+ * Manages all of the Arena objects for the matchmaking system
  */
 public class ArenaManager {
     private ArrayList<Arena> arenas = new ArrayList<>();
@@ -30,7 +28,7 @@ public class ArenaManager {
     }
 
     //Check if all arenas are full
-    public Boolean isArenasFull(){
+    public boolean isArenasFull(){
         for(int i = 0; i < arenas.size(); i++){
             if(arenas.get(i).isLocationsFilled() != true){
                 return false;
@@ -91,8 +89,8 @@ public class ArenaManager {
     //Get Arena players are in
     public Arena getArena(UUID player1, UUID player2){
         for(int i = 0; i < arenas.size(); i++){
-            Boolean matchA = false;
-            Boolean matchB = false;
+            boolean matchA = false;
+            boolean matchB = false;
             if(arenas.get(i).isLocationsFilled()){
                 ArenaLocation locA = arenas.get(i).getLocationA();
                 if(locA.getUUID().equals(player1) || locA.getUUID().equals(player2)){

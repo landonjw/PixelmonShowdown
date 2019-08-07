@@ -26,19 +26,19 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-/*
-    Manages the matchmaking and battle starting of matchmaking queues
+/**
+ * Manages the matchmaking and battle starting of matchmaking queues
  */
 public class MatchMakingManager {
-    private static QueueManager queueManager = PixelmonShowdown.getInstance().getQueueManager();
-    private static Boolean isRunning = false;
+    private static QueueManager queueManager = PixelmonShowdown.getQueueManager();
+    private static boolean isRunning = false;
     private static Task matchMake;
     private static final int INTERVAL = DataManager.getConfigNode().getNode("Queue-Management", "Match-Maker-Timer").getInt();
     private static final int WARM_UP = DataManager.getConfigNode().getNode("Queue-Management", "Battle-Preparation-Time").getInt();
     private static final int PREVIEW_TIME = DataManager.getConfigNode().getNode("Queue-Management", "Team-Preview-Time").getInt();
     private static final int BIAS_VALUE = DataManager.getConfigNode().getNode("Queue-Management", "Match-Maker-Bias-Value").getInt();
     private static final int MATCH_THRESHOLD = DataManager.getConfigNode().getNode("Queue-Management", "Match-Threshold-Value").getInt();
-    private static final Boolean ARENAS_ENABLED = DataManager.getConfigNode().getNode("Arena-Management", "Arenas-Enabled").getBoolean();
+    private static final boolean ARENAS_ENABLED = DataManager.getConfigNode().getNode("Arena-Management", "Arenas-Enabled").getBoolean();
 
     public static void runTask() {
         if (isRunning == false) {
@@ -85,7 +85,7 @@ public class MatchMakingManager {
             ArrayList<Pokemon> player1PokemonList = new ArrayList<>();
             ArrayList<Pokemon> player2PokemonList = new ArrayList<>();
 
-            Boolean player1PartyFainted = true;
+            boolean player1PartyFainted = true;
             for (int i = 0; i < player1Party.length; i++) {
                 if (player1Party[i] == null) {
                     continue;
@@ -93,7 +93,7 @@ public class MatchMakingManager {
                 player1PokemonList.add(player1Party[i]);
             }
 
-            Boolean player2PartyFainted = true;
+            boolean player2PartyFainted = true;
             for (int i = 0; i < player2Party.length; i++) {
                 if (player2Party[i] == null) {
                     continue;
@@ -171,7 +171,7 @@ public class MatchMakingManager {
             ArrayList<Pokemon> player2PokemonList = new ArrayList<>();
 
             //Check if either player's full party is fainted
-            Boolean player1PartyFainted = true;
+            boolean player1PartyFainted = true;
             for (int i = 0; i < player1Party.length; i++) {
                 if (player1Party[i] == null) {
                     continue;
@@ -182,7 +182,7 @@ public class MatchMakingManager {
                 player1PokemonList.add(player1Party[i]);
             }
 
-            Boolean player2PartyFainted = true;
+            boolean player2PartyFainted = true;
             for (int i = 0; i < player2Party.length; i++) {
                 if (player2Party[i] == null) {
                     continue;
@@ -194,23 +194,23 @@ public class MatchMakingManager {
             }
 
             //Check if either player's party does not follow formats rules
-            Boolean player1Validates = true;
+            boolean player1Validates = true;
             if(format.getBattleRules().validateTeam(player1PokemonList) != null){
                 player1Validates = false;
             }
 
-            Boolean player2Validates = true;
+            boolean player2Validates = true;
             if(format.getBattleRules().validateTeam(player2PokemonList) != null){
                 player2Validates = false;
             }
 
             //Check that either player's party is the same as what they began match with
-            Boolean player1PartySame = isPartySame(player1Pokemon, player1PokemonList);
-            Boolean player2PartySame = isPartySame(player2Pokemon, player2PokemonList);
+            boolean player1PartySame = isPartySame(player1Pokemon, player1PokemonList);
+            boolean player2PartySame = isPartySame(player2Pokemon, player2PokemonList);
 
             //Check that either player is not already in battle
-            Boolean player1InBattle = BattleRegistry.getBattle(participant1) != null;
-            Boolean player2InBattle = BattleRegistry.getBattle(participant2) != null;
+            boolean player1InBattle = BattleRegistry.getBattle(participant1) != null;
+            boolean player2InBattle = BattleRegistry.getBattle(participant2) != null;
 
             //Check parties are same they matchmade with
             if(player1PartySame == false || player2PartySame == false){
@@ -316,7 +316,7 @@ public class MatchMakingManager {
             PlayerParticipant[] pp2 = {new PlayerParticipant(participant2, participant2Starter)};
 
             //Send player to Arena if enabled
-            ArenaManager arenaManager = PixelmonShowdown.getInstance().getArenaManager();
+            ArenaManager arenaManager = PixelmonShowdown.getArenaManager();
             if(ARENAS_ENABLED) {
                 if (arenaManager.isArenasFull() == false) {
                     Arena arena = arenaManager.addPlayers(player1, player2);
@@ -331,7 +331,7 @@ public class MatchMakingManager {
                         player2.setLocationAndRotation(locB, locationB.getHeadRotation());
                     }
                     catch(Exception e) {
-                        PixelmonShowdown.getInstance().getLogger().error("Error Teleporting to Arena");
+                        PixelmonShowdown.getLogger().error("Error Teleporting to Arena");
                         e.printStackTrace();
                     }
 
@@ -436,7 +436,7 @@ public class MatchMakingManager {
         }
     }
 
-    private static Boolean isPartySame(ArrayList<Pokemon> party1, ArrayList<Pokemon> party2){
+    private static boolean isPartySame(ArrayList<Pokemon> party1, ArrayList<Pokemon> party2){
         if(party1.size() != party2.size()){
             return false;
         }

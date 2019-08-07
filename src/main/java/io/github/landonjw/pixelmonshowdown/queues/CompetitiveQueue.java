@@ -5,8 +5,8 @@ import org.spongepowered.api.Sponge;
 import java.util.ArrayList;
 import java.util.UUID;
 
-/*
-    Creates a queue with a specified format & ladder that allows players to queue for matchmaking
+/**
+ * Creates a queue with a specified format & ladder that allows players to queue for matchmaking
  */
 public class CompetitiveQueue {
     private CompetitiveFormat format;
@@ -31,22 +31,22 @@ public class CompetitiveQueue {
     }
 
     //Checks if player is in queue
-    public Boolean hasPlayerInQueue(UUID player){
+    public boolean hasPlayerInQueue(UUID player){
         return playersInQueue.contains(player);
     }
 
     //Checks if player is in prematch
-    public Boolean hasPlayerInPreMatch(UUID player){
+    public boolean hasPlayerInPreMatch(UUID player){
         return playersInPreMatch.contains(player);
     }
 
     //Checks if player in in a match
-    public Boolean hasPlayerInMatch(UUID player){
+    public boolean hasPlayerInMatch(UUID player){
         return playersInMatch.contains(player);
     }
 
     //Checks if player in in a match
-    public Boolean hasPlayerInAny(UUID player){
+    public boolean hasPlayerInAny(UUID player){
         if(playersInQueue.contains(player) || playersInPreMatch.contains(player)
                 || playersInMatch.contains(player)) {
             return true;

@@ -4,11 +4,10 @@ import com.flowpowered.math.vector.Vector3d;
 import io.github.landonjw.pixelmonshowdown.utilities.DataManager;
 import org.spongepowered.api.world.Location;
 
-/*
-    Defines an arena with two locations for players
+/**
+ * Defines an arena with two locations for players
  */
 public class Arena{
-
     private String name;
     private ArenaLocation locationA;
     private ArenaLocation locationB;
@@ -70,7 +69,7 @@ public class Arena{
         return locationB;
     }
 
-    public Boolean isLocationsFilled(){
+    public boolean isLocationsFilled(){
         return (locationA.getUUID() != null && locationB.getUUID() != null);
     }
 

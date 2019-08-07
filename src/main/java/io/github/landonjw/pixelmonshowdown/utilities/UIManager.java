@@ -36,17 +36,17 @@ import org.spongepowered.api.text.format.TextStyles;
 import java.util.*;
 import java.util.function.Consumer;
 
-/*
-    Manages all user interfaces for the Pixelmon Showdown plugin
+/**
+ * Manages all user interfaces for the Pixelmon Showdown plugin
  */
 public class UIManager {
 
-    private QueueManager manager = PixelmonShowdown.getInstance().getQueueManager();
+    private QueueManager manager = PixelmonShowdown.getQueueManager();
     private String activeQueueFormat = null;
     private ItemType activeQueueBall = (ItemType) PixelmonItemsPokeballs.pokeBall;
     private String activeArena = null;
     private ItemType activeArenaBall = (ItemType) PixelmonItemsPokeballs.pokeBall;
-    private PluginContainer container = PixelmonShowdown.getInstance().getContainer();
+    private PluginContainer container = PixelmonShowdown.getContainer();
     private Player player;
     private UUID playerUUID;
     private int arenasPageNum = 1;
@@ -187,7 +187,7 @@ public class UIManager {
             pokemonList.add(party[i]);
         }
 
-        Boolean doesValidate = false;
+        boolean doesValidate = false;
 
         if(activeQueueFormat == null){
             itemValidateTeam.offer(Keys.DISPLAY_NAME, Text.of(TextColors.GOLD, "Team Eligible: ", TextColors.RED, "Format Not Chosen"));
@@ -695,7 +695,7 @@ public class UIManager {
         ItemStack setLocA = ItemStack.of((ItemType) PixelmonItemsTools.galacticBoots, 1);
         setLocA.offer(Keys.DISPLAY_NAME, Text.of(TextColors.GOLD, "Set Location A"));
         Consumer<Action.Click> consSetLocA = action -> {
-            ArenaManager arenaManager = PixelmonShowdown.getInstance().getArenaManager();
+            ArenaManager arenaManager = PixelmonShowdown.getArenaManager();
             Arena arena = arenaManager.getArena(activeArena);
             if(arena != null){
                 ArenaLocation locationA = arena.getLocationA();
@@ -711,7 +711,7 @@ public class UIManager {
         ItemStack setLocB = ItemStack.of((ItemType) PixelmonItemsTools.neoBoots, 1);
         setLocB.offer(Keys.DISPLAY_NAME, Text.of(TextColors.GOLD, "Set Location B"));
         Consumer<Action.Click> consSetLocB = action -> {
-            ArenaManager arenaManager = PixelmonShowdown.getInstance().getArenaManager();
+            ArenaManager arenaManager = PixelmonShowdown.getArenaManager();
             Arena arena = arenaManager.getArena(activeArena);
             if(arena != null){
                 ArenaLocation locationB = arena.getLocationB();
@@ -748,7 +748,7 @@ public class UIManager {
     }
 
     public void openArenaList(){
-        ArenaManager arenaManager = PixelmonShowdown.getInstance().getArenaManager();
+        ArenaManager arenaManager = PixelmonShowdown.getArenaManager();
         arenaManager.sortArenas();
         ArrayList<Arena> arenas = arenaManager.getArenas();
         HashMap<Integer, Element> elements = new HashMap<>();
@@ -830,7 +830,7 @@ public class UIManager {
 
         if(DataManager.getConfigNode().getNode("GUI-Management", "Custom-Listing-Enabled").getBoolean() == true){
             Object[] newFormats = new Object[formats.length];
-            QueueManager queueManager = PixelmonShowdown.getInstance().getQueueManager();
+            QueueManager queueManager = PixelmonShowdown.getQueueManager();
             for(int i = 0; i < newFormats.length; i++){
                 for(int k = 0; k < newFormats.length; k++){
                     String strFormatName = (String) formats[k];

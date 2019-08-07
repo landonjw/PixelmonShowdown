@@ -35,12 +35,11 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-/*
-    Manages the various ways that a battle can end, and how to assign elo to players
+/**
+ * Manages the various ways that a battle can end, and how to assign elo to players
  */
 public class BattleManager {
-
-    private static final Boolean ARENAS_ENABLED = DataManager.getConfigNode().getNode("Arena-Management", "Arenas-Enabled").getBoolean();
+    private static final boolean ARENAS_ENABLED = DataManager.getConfigNode().getNode("Arena-Management", "Arenas-Enabled").getBoolean();
 
     @SubscribeEvent
     public void onBattleEnd(BattleEndEvent event){
@@ -68,7 +67,7 @@ public class BattleManager {
             //Check if both players are online
             if(Sponge.getServer().getPlayer(player1UUID).isPresent() && Sponge.getServer().getPlayer(player2UUID).isPresent()){
 
-                QueueManager queueManager = PixelmonShowdown.getInstance().getQueueManager();
+                QueueManager queueManager = PixelmonShowdown.getQueueManager();
 
                 //Check if both players are in a match
                 if(queueManager.isPlayerInMatch(player1UUID) && queueManager.isPlayerInMatch(player2UUID)){
@@ -226,7 +225,7 @@ public class BattleManager {
     //If player quits, remove them from any queue they were in
     @Listener
     public void onPlayerQuit(ClientConnectionEvent.Disconnect event) {
-        QueueManager queueManager = PixelmonShowdown.getInstance().getQueueManager();
+        QueueManager queueManager = PixelmonShowdown.getQueueManager();
 
         Player player = event.getTargetEntity();
         UUID playerUUID = player.getUniqueId();
@@ -242,7 +241,7 @@ public class BattleManager {
         if(event.getCommand().equals("endbattle")){
             //Check that source is a player
             if(event.getSource() instanceof Player){
-                QueueManager queueManager = PixelmonShowdown.getInstance().getQueueManager();
+                QueueManager queueManager = PixelmonShowdown.getQueueManager();
                 Player player = (Player) event.getSource();
                 UUID playerUUID = player.getUniqueId();
                 Player opponent;
@@ -316,7 +315,7 @@ public class BattleManager {
     //Removes players from an arena
     private void remFromArena(Player player1, UUID player1UUID, Player player2, UUID player2UUID){
         if(ARENAS_ENABLED){
-            ArenaManager arenaManager = PixelmonShowdown.getInstance().getArenaManager();
+            ArenaManager arenaManager = PixelmonShowdown.getArenaManager();
             Arena arena = arenaManager.getArena(player1UUID, player2UUID);
 
             //Check if arena doesn't exist (arena wasnt found)
