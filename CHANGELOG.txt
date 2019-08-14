@@ -12,3 +12,32 @@ Version 1.2.5 - July 31, 2019
   Tweaks:
     - Added teleportation before elo updating on battle ends to reduce clunkiness on crashes
     - Improved documentation within the source code
+
+
+Version 1.2.6 - August 7, 2019
+
+  Additions: 
+    - Added placeholders
+      - %showdown_<format>_wins% : defaults to 0 if profile is not found
+      - %showdown_<format>_losses% : defaults to 0 if profile is not found
+      - %showdown_<format>_winrate% : defaults to 0 if profile is not found
+      - %showdown_<format>_elo% : defaults to ELO_FLOOR if profile is not found
+  
+  Misc:
+    - General clean up of code
+
+
+Version 1.2.7 - August 13, 2019
+
+  Additions:
+    - Added proper reloading functionality with Sponge command (/sponge plugins reload pixelmonshowdown)
+    - Aded more placeholders
+      - %showdown_total_wins% : totals players wins across all formats
+      - %showdown_total_losses% : totals players losses across all formats
+      - %showdown_average_winrate%, averages the players winrate across all formats
+      - %showdown_average_elo%, averages the players elo across all formats
+    - Added Level-Floor config value to Formats.conf that restricts all pokemon under the set value
+    
+  Fixes:
+    - Plugin no longer yells at you if you forget to add to Elos.conf after creating a format in Formats.conf
+  
