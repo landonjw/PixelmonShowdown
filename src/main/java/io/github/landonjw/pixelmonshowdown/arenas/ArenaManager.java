@@ -18,6 +18,7 @@ public class ArenaManager {
 
     //Load arenas from Arenas.conf configuration
     public void loadArenas(){
+        arenas.clear();
         if(DataManager.getConfigNode().getNode("Arena-Management", "Arenas-Enabled").getBoolean() == true){
             DataManager.getArenasNode().getNode("Arenas").getChildrenMap().forEach((k,v) -> {
                 Arena arena = new Arena(k.toString());

@@ -21,16 +21,17 @@ public class EloLadder {
     //Load profiles from config
     public void loadLadder(){
         try{
-            DataManager.getElosNode().getNode("Player-Elos", formatName).getChildrenMap().forEach((uuid, stats) -> {
-                UUID playerUUID = UUID.fromString(uuid.toString());
-                EloProfile newProfile = new EloProfile(playerUUID, formatName);
-                newProfile.loadProfile();
-                eloProfilesByElo.add(newProfile);
-                eloProfilesByUUID.put(playerUUID, newProfile);
-            });
+            if(DataManager.getElosNode().getNode("Player-Elos", formatName).hasMapChildren()) {
+                DataManager.getElosNode().getNode("Player-Elos", formatName).getChildrenMap().forEach((uuid, stats) -> {
+                    UUID playerUUID = UUID.fromString(uuid.toString());
+                    EloProfile newProfile = new EloProfile(playerUUID, formatName);
+                    newProfile.loadProfile();
+                    eloProfilesByElo.add(newProfile);
+                    eloProfilesByUUID.put(playerUUID, newProfile);
+                });
 
-
-            sortProfiles();
+                sortProfiles();
+            }
         }
         catch(Exception e) {
             PixelmonShowdown.getLogger().error("PixelmonShowdown has encountered an error loading elo profiles!");

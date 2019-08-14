@@ -323,6 +323,16 @@ public class CompetitiveFormat {
             }
         }
 
+        int minLevel = DataManager.getFormatsNode().getNode("Formats", formatName, "Battle-Rules", "Level-Floor").getInt();
+        if(minLevel >= 0 && minLevel <= 100) {
+            BattleClause clause = new MinLevelClause("Level Floor", minLevel);
+            allClauses.add(clause);
+            strBattleRules.add("Level Floor: " + minLevel);
+        }
+        else{
+            PixelmonShowdown.getLogger().error("Error Adding Minimum Level Clause: " + minLevel + ". Please check format config for errors.");
+        }
+
         newRules.setNewClauses(allClauses);
 
         newRules.battleType = EnumBattleType.Single;

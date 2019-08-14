@@ -20,6 +20,7 @@ public class QueueManager {
 
     //Load all competitive queues from the Formats.conf config
     public void loadFromConfig(){
+        queuesMap.clear();
         DataManager.getFormatsNode().getNode("Formats").getChildrenMap().forEach((k, v) -> {
             PixelmonShowdown.getLogger().info("Loading Queue: " + k.toString());
 

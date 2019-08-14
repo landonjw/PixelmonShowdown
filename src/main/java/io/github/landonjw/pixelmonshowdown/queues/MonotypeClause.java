@@ -2,7 +2,9 @@ package io.github.landonjw.pixelmonshowdown.queues;
 
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.battles.rules.clauses.BattleClause;
+import com.pixelmonmod.pixelmon.enums.EnumSpecies;
 import com.pixelmonmod.pixelmon.enums.EnumType;
+import com.pixelmonmod.pixelmon.enums.forms.EnumSilvally;
 import io.github.landonjw.pixelmonshowdown.PixelmonShowdown;
 
 import java.util.List;

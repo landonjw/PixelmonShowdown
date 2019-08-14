@@ -110,6 +110,21 @@ public class DataManager {
                     .build()
                     .load(ConfigurationOptions.defaults()));
 
+            elosNode.mergeValuesFrom(HoconConfigurationLoader.builder()
+                    .setURL(PixelmonShowdown.getContainer().getAsset(FILES[1]).get().getUrl())
+                    .build()
+                    .load(ConfigurationOptions.defaults()));
+
+            formatsNode.mergeValuesFrom(HoconConfigurationLoader.builder()
+                    .setURL(PixelmonShowdown.getContainer().getAsset(FILES[2]).get().getUrl())
+                    .build()
+                    .load(ConfigurationOptions.defaults()));
+
+            arenasNode.mergeValuesFrom(HoconConfigurationLoader.builder()
+                    .setURL(PixelmonShowdown.getContainer().getAsset(FILES[3]).get().getUrl())
+                    .build()
+                    .load(ConfigurationOptions.defaults()));
+
             saveAll();
 
         } catch (IOException e) {

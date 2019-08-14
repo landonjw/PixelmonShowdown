@@ -15,8 +15,7 @@
     "logoFile": "",
     "screenshots": [],
     "dependencies": [
-      "pixelmon",
-      "teslalibs"
+      "pixelmon"
     ]
   }
 ]
