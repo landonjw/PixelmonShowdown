@@ -264,7 +264,7 @@ public class CompetitiveFormat {
         BattleClause[] arrClauses = new BattleClause[builtClauses.size()];
         arrClauses = builtClauses.toArray(arrClauses);
 
-        BattleClauseAll comboClause = new BattleClauseAll("ComplexClause" + complexNum, arrClauses);
+        BattleClauseSingleAll comboClause = new BattleClauseSingleAll("ComplexClause" + complexNum, arrClauses);
 
         complexNum++;
         complexClauses.add(comboClause);
