@@ -1,6 +1,5 @@
 # PixelmonShowdown
 Competitive ELO System for Pixelmon. For more information, refer to the wiki!
-To see the continuation of this project, Showdown, is is [here](https://github.com/landonjw/Showdown)
 
 ## Download
 Download is available on Ore [here](https://ore.spongepowered.org/landonjw/PixelmonShowdown)
