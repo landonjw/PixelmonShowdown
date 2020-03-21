@@ -65,7 +65,7 @@ public class CompetitiveFormat {
                     if(EnumSpecies.getFromName(pokemon).isPresent()) {
 
                         //Find object for suffix & return it
-                        Object[] forms = EnumSpecies.formList.get(EnumSpecies.getFromName(pokemon).get()).toArray();
+                        Object[] forms = EnumSpecies.getFromName(pokemon).get().getPossibleForms(false).toArray();
                         for (Object formsList : forms) {
                             IEnumForm castF = (IEnumForm) formsList;
                             if (castF.getFormSuffix().equals(suffix)) {
